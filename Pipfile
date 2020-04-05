@@ -6,6 +6,7 @@ verify_ssl = true
 [dev-packages]
 pep8 = "*"
 pylint = "*"
+autopep8 = "*"
 
 [packages]
 pytest = "*"
@@ -14,6 +15,7 @@ pytest-xdist = "*"
 requests = "*"
 allure-pytest = "*"
 pandas = "*"
+selenium = "*"
 
 [requires]
 python_version = "3.7"

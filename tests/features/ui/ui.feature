@@ -1,4 +1,4 @@
 Feature: Selenium feature
 
     Scenario: Selenium Scenario
-        Given test cucumber
+        Given Launch browser and search on google
