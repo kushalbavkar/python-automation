@@ -1,38 +1,122 @@
-## Python BDD for testing using pytest-bdd
+# Python BDD framework
 
 * Testing framework for black box testing using pytest-bdd, python, selenium
 
-### Pre requisites
-1. Python >= 3.7 or Anaconda
-2. IDE of your choice (Pycharm / VS Code etc..)
-3. Chromedriver binary
-4. Git
+## Pre-requisites
+   1. Python / Anaconda / Miniconda 
+   2. IDE of your choice (IntelliJ Idea / Pycharm / VS Code etc...)
+   3. Chromedriver binary
+   4. Git
 
-### Setup environment
-1. Set the below environment variables on your system
+## Setup environment
+1. Set the below environment variables on your system (Optional)
 
-    * PIPENV_VENV_IN_PROJECT="enabled" : sets up pipenv virtual environment in project directory
-    * PYTHONDONTWRITEBYTECODE=1 : prevents pytest from creating `__pycache__` folders
+   * Set virtual environment location
 
-2. Install dependencies and create pipenv virtual environment
-    * Upgrade to python version 3.7 if you have a lower version & if you are using Anaconda distribution using the below command
-
-        `conda create --name py37 python=3.7` => creates conda environment 
-
-        `conda activate py37` => command prompt 
-
-        `source activate py37` => bash
-
-        (`Note`: if you are using this setup then you would need to activate the environment before proceeding with the next steps.. use conda activate or source activate commands mentioned above)
-
-    * Create virtual environment and install dependencies. Navigate to the project directory and enter the below commands
-
-        `pip install pipenv` => use this only for the first time while setting up the virtual enviroment
-
-        `pipenv install --dev --skip-lock` => use this command whenever you have changed the dependencies in Pipfile
+      
+      $ PIPENV_VENV_IN_PROJECT  =  1          # forces virtual environment creation in project directory
+      $ WORKON_HOME = {directory.of.choice}   # forces virtual enviroment in specified directory 
+      
+      
+   * Prevent pytest from creating __pycache__ folder
 
 
-### Useful links
+      $ PYTHONDONTWRITEBYTECODE =  1
+
+
+2. Install `pipenv` package manager
+
+
+      $ pip install pipenv
+
+
+3. Setup `conda` environment (Optional)
+   
+   Use this step only if you are using lower version of python < 3.9 and wish to upgrade it rather than
+   installing separately.
+   However, you can still use `conda` environment + `virtual` environment created using pipenv if you wish to.
+
+        
+   * Create conda environment
+     
+
+      $ conda create --name py39 python=3.9
+
+
+   * Activate conda environment
+      
+      
+      # --- If you are using command prompt ---
+      $ conda activate py39
+
+      # --- If you are using git bash ---
+      $ source activate py39
+
+        
+4. Create virtual environment using `pipenv` & install packages from Pipfile
+
+   * Navigate to project directory
+      
+
+      $ cd {project.dir}
+
+
+   * Create virtual env and install packages
+      
+
+      $ pipenv --site-packages install --dev --skip-lock
+
+
+5. Verify installation
+
+      
+   * Virtual environment location
+      
+
+      $ pipenv --venv
+
+
+   * Python interpreter location
+      
+      
+      $ pipenv run where python        # Use the python.exe location from virtual environment
+
+
+   * Check Installed packages
+      
+
+      $ pipenv graph
+
+
+## Running tests
+
+You can run the tests easily by issuing the following command.
+
+   * Navigate to project directory
+
+
+      $ cd {project.dir}
+   
+
+   * Running all tests
+
+            
+      $ pipenv run pytest
+
+      
+   * Running single python module
+      
+
+      $ pipenv run pytest {path to 'test_*.py' file}
+
+      
+   * Running tests using tags
+      
+
+      $ pipenv run pytest -m {tag.name}
+
+
+## Useful links
 1. https://github.com/pytest-dev/pytest-bdd
 2. https://readthedocs.org/projects/pytest-bdd/downloads/pdf/latest/
 3. https://docs.pytest.org/en/latest/contents.html
