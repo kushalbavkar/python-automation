@@ -39,10 +39,10 @@ However, you can still use `conda` environment + `virtual` environment created u
 #### Activate conda environment
       
       
-      --- If you are using command prompt ---
+      # --- If you are using command prompt ---
       $ conda activate py39
 
-      --- If you are using git bash ---
+      # --- If you are using git bash ---
       $ source activate py39
 
         
