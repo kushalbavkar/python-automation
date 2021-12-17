@@ -9,80 +9,73 @@
    4. Git
 
 ## Setup environment
-1. Set the below environment variables on your system (Optional)
 
-   * Set virtual environment location
+### Environment variables (Optional)
 
       
       $ PIPENV_VENV_IN_PROJECT  =  1          # forces virtual environment creation in project directory
       $ WORKON_HOME = {directory.of.choice}   # forces virtual enviroment in specified directory 
-      
-      
-   * Prevent pytest from creating __pycache__ folder
 
 
-      $ PYTHONDONTWRITEBYTECODE =  1
-
-
-2. Install `pipenv` package manager
+### Install 'pipenv' package manager
 
 
       $ pip install pipenv
 
 
-3. Setup `conda` environment (Optional)
+### Setup 'conda' environment (Optional)
    
-   Use this step only if you are using lower version of python < 3.9 and wish to upgrade it rather than
-   installing separately.
-   However, you can still use `conda` environment + `virtual` environment created using pipenv if you wish to.
+Use this step only if you are using lower version of python < 3.9 and wish to upgrade it rather than
+installing separately.
+However, you can still use `conda` environment + `virtual` environment created using pipenv if you wish to.
 
         
-   * Create conda environment
+#### Create conda environment
      
 
       $ conda create --name py39 python=3.9
 
 
-   * Activate conda environment
+#### Activate conda environment
       
       
-      # --- If you are using command prompt ---
+      --- If you are using command prompt ---
       $ conda activate py39
 
-      # --- If you are using git bash ---
+      --- If you are using git bash ---
       $ source activate py39
 
         
-4. Create virtual environment using `pipenv` & install packages from Pipfile
+### Create virtual environment using `pipenv` & install packages from Pipfile
 
-   * Navigate to project directory
+#### Navigate to project directory
       
 
       $ cd {project.dir}
 
 
-   * Create virtual env and install packages
+#### Create virtual environment & install packages
       
 
       $ pipenv --site-packages install --dev --skip-lock
 
 
-5. Verify installation
+### Verify installation
 
-      
-   * Virtual environment location
+
+#### Virtual environment location
       
 
       $ pipenv --venv
 
 
-   * Python interpreter location
+#### Python interpreter location
       
       
       $ pipenv run where python        # Use the python.exe location from virtual environment
 
 
-   * Check Installed packages
+#### Check Installed packages
       
 
       $ pipenv graph
@@ -92,25 +85,25 @@
 
 You can run the tests easily by issuing the following command.
 
-   * Navigate to project directory
+#### Navigate to project directory
 
 
       $ cd {project.dir}
-   
 
-   * Running all tests
+
+#### Running all tests
 
             
       $ pipenv run pytest
 
-      
-   * Running single python module
+
+#### Running single python module
       
 
       $ pipenv run pytest {path to 'test_*.py' file}
 
-      
-   * Running tests using tags
+
+#### Running tests using tags
       
 
       $ pipenv run pytest -m {tag.name}
