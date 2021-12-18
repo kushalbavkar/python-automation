@@ -20,12 +20,14 @@ def test_context():
 @pytest.fixture(scope='function')
 def web_driver():
     driver = WebDriverManager(Environ.Environment.value).get_driver()
+    driver.maximize_window()
     return driver
 
 
-@pytest.fixture(scope='function')
+@pytest.fixture(scope='function', autouse=True)
 def teardown(test_context, web_driver):
     yield
-    del test_context
     if web_driver is not None:
         web_driver.quit()
+
+    del test_context, web_driver

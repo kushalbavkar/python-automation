@@ -4,3 +4,5 @@ reports
 .venv
 Pipfile.lock
 __pycache__
+
+*.exe

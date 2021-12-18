@@ -7,7 +7,7 @@ from test_client.ui.webdriver import WebDriver
 
 
 @given(parsers.parse('I am on "{site}" homepage'))
-def i_am_on_github_homepage(test_context: TestContext, web_driver: WebDriver, site: Sites):
-    test_context.site = Sites(site)
+def i_am_on_github_homepage(test_context: TestContext, web_driver: WebDriver, site: str):
+    test_context.site = getattr(Sites, site)
     github = GitHubActions(web_driver)
     github.navigate(test_context.site)

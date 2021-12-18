@@ -1,3 +1,4 @@
+from pathlib import Path
 from selenium import webdriver
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 from selenium.webdriver.remote.remote_connection import RemoteConnection
@@ -18,7 +19,9 @@ class WebDriverManager:
             return self._remote()
 
     def _local(self):
-        return webdriver.Chrome(executable_path=self._config.driver, desired_capabilities=DesiredCapabilities.CHROME)
+        path = Path(self._config.driver)
+        driver = path.as_posix() if path.exists() else self._search_in_root()
+        return webdriver.Chrome(executable_path=driver, desired_capabilities=DesiredCapabilities.CHROME)
 
     def _remote(self):
         connection = RemoteConnection(remote_server_addr=self._config.driver, resolve_ip=False)
@@ -31,3 +34,7 @@ class WebDriverManager:
             }
         }
         return webdriver.Remote(connection, desired_capabilities=capabilities)
+
+    def _search_in_root(self):
+        curr_file = Path(__file__)
+        return curr_file.parent.parent.parent.joinpath(self._config.driver).as_posix()
