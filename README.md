@@ -80,6 +80,13 @@ However, you can still use `conda` environment + `virtual` environment created u
 
       $ pipenv graph
 
+## Setup tests
+For this implementation to work, you would need to set an environment variable before you run the tests.
+Set the following environment variable. It can accept either `dev` or `prod` as value.
+
+
+    Environment=(dev|prod)
+
 
 ## Running tests
 
@@ -104,12 +111,33 @@ You can run the tests easily by issuing the following command.
 
 
 #### Running tests using tags
-      
+
 
       $ pipenv run pytest -m {tag.name}
 
 
+## Generate test reports
+
+### Download allure cli
+
+Download the latest version of allure cli from Maven Central (https://repo.maven.apache.org/maven2/io/qameta/allure/allure-commandline/)
+
+### Generate report
+
+#### Navigate to the report directory 
+See the `--alluredir` flag it is either mentioned in the `pytest.ini` file or using the `PYTEST_ADDOPTS` environment variable.
+
+
+      $ cd {reports.dir}
+
+#### Generate reports
+
+
+    $ allure serve json -p 5555
+
+
+
 ## Useful links
-1. https://github.com/pytest-dev/pytest-bdd
-2. https://readthedocs.org/projects/pytest-bdd/downloads/pdf/latest/
-3. https://docs.pytest.org/en/latest/contents.html
+1. [pytest-bdd](https://pytest-bdd.readthedocs.io/en/stable/)
+2. [pytest](https://docs.pytest.org/en/latest/contents.html)
+3. [allure](https://docs.qameta.io/allure/)

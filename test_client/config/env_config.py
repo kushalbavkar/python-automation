@@ -4,6 +4,9 @@ from pathlib import Path
 from iniconfig import IniConfig
 
 from test_client.exceptions.exceptions import UnsupportedEnvironmentError
+from test_client.utils.logger import logger
+
+log = logger.get_logger(__file__)
 
 
 class Environments:
@@ -23,7 +26,9 @@ class Config:
         environments = (Environments.DEV, Environments.PROD)
 
         if env not in environments:
-            raise UnsupportedEnvironmentError(f'{env} is not supported. Supported environments {environments} ')
+            message = f'[{env}] is not supported. Supported environments {environments}'
+            log.error(message)
+            raise UnsupportedEnvironmentError(message)
 
         if env == Environments.DEV:
             return cls._dev(*config.sections.get(env).values())

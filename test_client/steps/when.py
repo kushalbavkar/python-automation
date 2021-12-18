@@ -1,3 +1,4 @@
+import allure
 from pytest_bdd import when, parsers
 
 from test_client.fixtures.test_context import TestContext
@@ -6,6 +7,7 @@ from test_client.actions.github import GitHubActions
 
 
 @when(parsers.parse('I search for "{user}" user'))
+@allure.step('I search for "pytest-dev" user')
 def i_search_for_user(test_context: TestContext, web_driver: WebDriver, user):
     test_context.user = user
     github = GitHubActions(web_driver)
@@ -14,6 +16,7 @@ def i_search_for_user(test_context: TestContext, web_driver: WebDriver, user):
 
 
 @when(parsers.parse('I select "{project}" project'))
+@allure.step('I select "pytest-bdd" project')
 def i_select_project(test_context: TestContext, web_driver: WebDriver, project):
     test_context.project = project
     github = GitHubActions(web_driver)
